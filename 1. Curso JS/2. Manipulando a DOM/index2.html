@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!---<link rel="stylesheet" href="./css/style.css">-->
+		<title>Exercício 03</title>
+	</head>
+	<body>
+		
+		<div id="container"></div>
+
+		<script>
+			
+			// 1º Parte: Criando lista de nomes...
+			var nomes = ['Diego', 'Gabriel', 'Lugas'];
+
+			var lista = document.createElement('ul');
+
+			var container = document.querySelector('div[id=container]');
+			container.appendChild(lista);
+
+			var novo_li;
+			for(var nome of nomes){
+				novo_li = document.createElement('li');
+				novo_li.setAttribute('class', 'nome-lista');
+				novo_li.append(nome);
+				lista.appendChild(novo_li);
+			}
+
+			// 2º Parte: Adicionando input e button...
+			var inputElement = document.createElement('input');
+			inputElement.setAttribute('type', 'text');
+			inputElement.setAttribute('name','nome');
+			container.insertBefore(inputElement, lista);
+			inputElement.style.marginRight = '5px';
+
+			var buttonElement = document.createElement('button');
+			buttonElement.append('Adicionar');
+			buttonElement.setAttribute('onclick', 'adicionar()');
+			container.insertBefore(buttonElement, lista);
+
+			// 3º Parte: Função adicionar novo item de lista baseado no nome digitado...
+			function adicionar(){
+				
+				// criando novo Li
+				var novo_li = document.createElement('li');
+				novo_li.setAttribute('class', 'novo-nome');
+				novo_li.append(inputElement.value);
+				lista.appendChild(novo_li);
+				inputElement.value = "";
+			}
+			
+		</script>
+	</body>
+</html>
